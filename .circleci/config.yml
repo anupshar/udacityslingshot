@@ -25,7 +25,7 @@ jobs:
       - run:
           name: Run test
           command: npm run test
-  analyse:  
+  analyze:  
     docker:
       - image: cimg/node:15.1
     steps:
@@ -40,6 +40,8 @@ workflows:
     jobs:
       - build
       - test:
-          requires: build
+          requires: 
+            - build
       - analyze:
-          requires: test
+          requires: 
+            - test
